@@ -1,0 +1,20 @@
+ $("download").addEventListener("click", () => {
+    const canvas = $("qrcode").querySelector("canvas");
+    const img = $("qrcode").querySelector("img");
+    let data = canvas ? canvas.toDataURL("image/png") : (img ? img.src : "");
+
+    if (!data) {
+      $("message").textContent = "Génère d'abord un QR code.";
+      return;
+    }
+
+    const a = document.createElement("a");
+    a.href = data;
+    a.download = "QR-Vision-Infinie.png";
+    a.click();
+  });
+
+  showSaved();
+</script>
+</body>
+</html>
